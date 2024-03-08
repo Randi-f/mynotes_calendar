@@ -46,7 +46,7 @@ jobs:
           python -m unittest app_test.py
 
   build_to_ghcr:
-    needs: python-formatting  # build only runs if test is successful
+    needs: db_connection_test  # build only runs if test is successful
     runs-on: ubuntu-latest
 
     steps:
