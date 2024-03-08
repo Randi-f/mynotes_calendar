@@ -12,7 +12,7 @@ RUN pip install -r requirements.txt
 
 COPY app.py /app
 
-# Make port 80 available to the world outside this container
+# Make port 5000 available to the world outside this container
 EXPOSE 5000
 
 # Define environment variable
