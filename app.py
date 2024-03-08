@@ -9,9 +9,7 @@ from flask import Flask, jsonify, request
 
 
 import psycopg2 as db
-import requests
 import os
-
 
 app = Flask(__name__)
 
