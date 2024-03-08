@@ -5,11 +5,7 @@ version: 1.0
 description: 
 """
 
-from flask import (
-    Flask,
-    jsonify,
-    request
-)
+from flask import Flask, jsonify, request
 
 
 import psycopg2 as db
