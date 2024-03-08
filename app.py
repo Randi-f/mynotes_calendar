@@ -1,9 +1,10 @@
-'''
+"""
 Author: shihan
 Date: 2024-03-08 13:50:36
 version: 1.0
 description: 
-'''
+"""
+
 from flask import (
     Flask,
     jsonify,
@@ -13,7 +14,7 @@ from flask import (
     url_for,
 )
 
-import psycopg as db
+import psycopg2 as db
 import requests
 import os
 import random
@@ -29,6 +30,7 @@ DB_PORT = "5432"
 
 event_data = []
 
+
 def get_db_connection():
     server_params = {
         "dbname": DB_USER,
@@ -40,7 +42,8 @@ def get_db_connection():
     }
     return db.connect(**server_params)
 
-@app.route("/api/events", methods=["GET"])
+
+@app.route("/get_events", methods=["GET"])
 def get_events():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -58,7 +61,7 @@ def get_events():
     return jsonify(event_data)
 
 
-@app.route("/api/events", methods=["POST"])
+@app.route("/add_events", methods=["POST"])
 def add_event():
     data = request.get_json()
     userid = data.get("username")
@@ -84,3 +87,7 @@ def add_event():
     conn.close()
     print(events)
     return jsonify({"message": "Event added successfully"})
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
