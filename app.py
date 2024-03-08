@@ -15,9 +15,7 @@ from flask import (
 )
 
 import psycopg2 as db
-import requests
 import os
-import random
 from datetime import datetime
 
 app = Flask(__name__)
