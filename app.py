@@ -7,17 +7,11 @@ description:
 from flask import (
     Flask,
     jsonify,
-    request,
-    session,
-    redirect,
-    url_for,
+    request
 )
-
 import psycopg as db
-import requests
 import os
-import random
-from datetime import datetime
+
 
 app = Flask(__name__)
 
@@ -66,8 +60,6 @@ def add_event():
     endTime = data.get("end")
     title = data.get("title")
     query = "INSERT INTO calendar (userid, startTime, endTime, title) VALUES (%s,%s, %s,%s) returning id"
-    if "username" not in session:
-        return redirect(url_for("login"))
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
