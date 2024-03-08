@@ -41,7 +41,7 @@ jobs:
 
       - name: Run DB connection test
         env: 
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }} #added to repo
         run: |
           python -m unittest app_test.py
 
