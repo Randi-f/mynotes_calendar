@@ -24,27 +24,27 @@ jobs:
       - name: Run Black
         run: black --check app.py
 
-  # db_connection_test:
-  #   needs: python-formatting
-  #   runs-on: ubuntu-latest
+  db_connection_test:
+    needs: python-formatting
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Check out repository code
-  #       uses: actions/checkout@v3
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
 
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: '3.8'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
 
-  #     - name: Install dependencies
-  #       run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: pip install -r requirements.txt
 
-  #     - name: Run DB connection test
-  #       env: 
-  #         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-  #       run: |
-  #         python -m unittest app_test.py
+      - name: Run DB connection test
+        env: 
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        run: |
+          python -m unittest app_test.py
 
   build_to_ghcr:
     needs: python-formatting  # build only runs if test is successful
